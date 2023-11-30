@@ -1,0 +1,37 @@
+<div id="username-page" *ngIf="!temNome">
+    <div class="username-page-container">
+        <h1 class="title">Escreva seu nome para entrar no chat!</h1>
+        <div id="usernameForm" name="usernameForm">
+            <div class="form-group">
+                <input type="text" id="name" placeholder="Username" autocomplete="off" class="form-control" [(ngModel)]="nome" />
+            </div>
+            <div class="form-group">
+                <button type="submit" class="accent username-submit" (click)="iniciarConexao()">Entrar Chatting</button>
+            </div>
+        </div>
+    </div>
+</div>
+  
+<div id="chat-page" *ngIf="temNome">
+    <div class="chat-container">
+        <div class="chat-header">
+            <h2>Chatonilderson</h2>
+        </div>
+        <ul id="messageArea" *ngFor="let receivedMessage of receivedMessages" id="#chat-page">
+            <li class="chat-message" style="padding: 20px 30px 20px 68px; overflow: hidden;">
+                <i style="background-color: rgb(33, 150, 243);" [style.backgroundColor]="stringToColor(receivedMessage.sender)">{{ receivedMessage.sender[0]}}</i>
+                <span>{{ receivedMessage.sender}}
+                </span><p>{{ receivedMessage.content }}</p>
+            </li>
+
+        </ul>
+        <div id="messageForm" name="messageForm">
+            <div class="form-group">
+                <div class="input-group clearfix">
+                    <input type="text" id="message" placeholder="Type a message..." autocomplete="off" class="form-control" [(ngModel)]="message"/>
+                    <button type="submit" class="primary"  (click)="sendMessage()">Send</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
