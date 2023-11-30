@@ -24,11 +24,11 @@ export class WebSocketAPI {
   }
 
   conectarComNome(nome) {
-    this.stompClient.connect({}, (message) => {
-      this.stompClient.subscribe('/topic/public', JSON.stringify({sender: nome, type: 'JOIN'}));
-      console.log(message);
-      this.messagesSubject.next(JSON.parse(message.body))
-    });
+    this.stompClient.send('/app/chat.addUser', {}, JSON.stringify({sender: nome, type: 'JOIN'}));
+    // this.stompClient.connect({}, (message) => {
+    //   this.stompClient.subscribe('/topic/public', JSON.stringify({sender: nome, type: 'JOIN'}));
+    //   this.messagesSubject.next(JSON.parse(message.body))
+    // });
   }
 
   enviarMensagem(message) {
