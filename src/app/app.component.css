@@ -8,7 +8,9 @@ html,body {
     height: 100%;
     overflow: hidden;
 }
-
+ul{
+    overflow-y:none!important;
+}
 body {
     margin: 0;
     padding: 0;
